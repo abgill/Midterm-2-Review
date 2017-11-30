@@ -17,7 +17,7 @@
             <input type="text" ng-model="formContent"></input>
             <button type="submit">Candidate</button>
         </form>
-        <div ng-repeat="candidate in candidates | orderBy: '-upvotes'">
+        <div ng-repeat="candidate in candidates | orderBy: ['-upvotes','title']">
             <span class="glyphicon glyphicon-remove" ng-click="delete(candidate)"></span>
             <!--<span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(candidate)"></span>-->
             {{candidate.title}} - votes: {{candidate.upvotes}}

@@ -71,9 +71,31 @@ router.get('/getCandidates', function (req,res,next) {
     })
 })
 
+
+
 /* GET home page. */
 router.put('/submitVotes', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+    var ballot = req.body;
+
+    console.log(ballot);
+
+    for(var i = 0; i < ballot.length; i++) {
+
+        //ballot[i].upvotes += 1;
+
+        Candidate.findByIdAndUpdate(ballot[i]._id, ballot[i], function (err, vote) {
+            if (err) {
+                return res
+                    .status(500)
+                    .send({error: "unsuccessful"})
+            }
+            ;
+
+        })
+
+
+    }
+    
 });
 
 module.exports = router;
